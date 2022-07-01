@@ -1,6 +1,8 @@
 import express from 'express';
 import fetch from 'node-fetch';
 
+import db from '../config/initializeDB.js';
+
 const router = express.Router();
 
 //
@@ -11,23 +13,26 @@ const router = express.Router();
 // /////////////////////////////////
 // Food Inspection Set Demos
 // /////////////////////////////////
-router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
+router.route('/cereal') // actually localhost:3000/api/foodServicesPG
+  .all((req, res, next) => {
+    // runs for all HTTP verbs first
+    // think of it as route specific middleware!
+    next();
+  })
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
-      const data = await fetch(url);
-      const json = await data.json();
-      console.log(json);
-
-      res.json({data: json});
-    } catch (error) {
-      console.log(error);
-      res.json({error: error});
+      console.log('touched cerela endpoint');
+      const parks = await db.Cereal.findAll();
+      const reply = Cereal.length > 0 ? { parks } : { message: 'no results found' };
+      res.json(reply);
+    } catch (err) {
+      console.log('err');
+      res.json({message: 'Server error'});
     }
   })
   .put((req, res) => {
     try {
-      res.json({message: 'put FoodServices endpoint'});
+      res.json({message: 'put Cereal endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -35,7 +40,7 @@ router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   })
   .post((req, res) => {
     try {
-      res.json({message: 'post FoodServices endpoint'});
+      res.json({message: 'post Cereal endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -43,14 +48,14 @@ router.route('/foodServicesPG') // actually localhost:3000/api/foodServicesPG
   })
   .delete((req, res) => {
     try {
-      res.json({message: 'delete FoodServices endpoint'});
+      res.json({message: 'delete Cereal endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
     }
   });
 
-router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServicesPG/20782
+router.route('/cereal/:zipCode') // actually localhost:3000/api/foodServicesPG/20782
   .get(async (req, res) => {
     try {
       const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
@@ -71,7 +76,7 @@ router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServ
   })
   .put((req, res) => {
     try {
-      res.json({message: 'put FoodServices ID endpoint'});
+      res.json({message: 'put Cereal ID endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -79,7 +84,7 @@ router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServ
   })
   .post((req, res) => {
     try {
-      res.json({message: 'post FoodServices ID endpoint'});
+      res.json({message: 'post Cereal ID endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});
@@ -87,7 +92,7 @@ router.route('/foodServicesPG/:zipCode') // actually localhost:3000/api/foodServ
   })
   .delete((req, res) => {
     try {
-      res.json({message: 'delete FoodServices ID endpoint'});
+      res.json({message: 'delete Cereal ID endpoint'});
     } catch (error) {
       console.log(error);
       res.json({error: 'Something went wrong on the server'});

@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 400px) {
+  .photo-grid-item {
+    width: 50%;
+    height: 195px;
+  }
+}
+
+/* Tablet Styles */
+@media only screen and (min-width: 401px) and (max-width: 960px) {}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+  .photo-grid-item {
+    width: 33.3%;
+    height: 300px;
+  }
+}
+
+.lab-header {
+  background-color: rgba(0, 139, 139, 0.8);
+  padding: 5px;
+}
+
+.menu-container {
+  color: #fff;
+  background-color: #5995DA;
+  /* Blue */
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  border: 1px;
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.links {
+  border: 1px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.database-demos {
+  margin-left: auto;
+}
+
+.main-page {
+  margin-left: 20px;
+}
+
+.header-container {
+  color: #5995DA;
+  background-color: #D6E9FE;
+  display: flex;
+  justify-content: center;
+}
+
+.header {
+  width: 900px;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.illustration {
+  width: 100%;
+}
+
+.github,
+.logo,
+.group-project {
+  border: 1px solid x#5995DA;
+}
+
+.github,
+.group-project {
+  align-self: flex-end;
+  margin-bottom: 20px;
+}
