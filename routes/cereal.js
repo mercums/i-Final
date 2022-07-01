@@ -21,16 +21,16 @@ router.route('/cereal') // actually localhost:3000/api/foodServicesPG
   })
   .get(async (req, res) => {
     try {
-      console.log('touched cerela endpoint');
-      const parks = await db.Cereal.findAll();
-      const reply = Cereal.length > 0 ? { parks } : { message: 'no results found' };
+      console.log('touched cereal endpoint');
+      const cereal = await db.Cereal.findAll();
+      const reply = Cereal.length > 0 ? { cereal } : { message: 'no results found' };
       res.json(reply);
     } catch (err) {
       console.log('err');
       res.json({message: 'Server error'});
     }
   })
-  .put((req, res) => {
+  .put(async(req, res) => {
     try {
       res.json({message: 'put Cereal endpoint'});
     } catch (error) {
@@ -38,15 +38,22 @@ router.route('/cereal') // actually localhost:3000/api/foodServicesPG
       res.json({error: 'Something went wrong on the server'});
     }
   })
-  .post((req, res) => {
+  .post(async(req, res) => {
+    const cereal = await db.Cereal.findAll();
+    const currentId = (await cereal.length) + 1;
     try {
-      res.json({message: 'post Cereal endpoint'});
-    } catch (error) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
+      const newCereal = await db.Cereal.create({
+        name: req.body.name,
+        type: req.body.hotCold,
+        calories: req.body.calories
+      });
+      res.json(newCereal);
+    } catch (err) {
+      console.error(err);
+      res.json('Server error');
     }
   })
-  .delete((req, res) => {
+  .delete(async(req, res) => {
     try {
       res.json({message: 'delete Cereal endpoint'});
     } catch (error) {

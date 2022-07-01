@@ -24,13 +24,13 @@
 }
 
 .lab-header {
-  background-color: rgba(0, 139, 139, 0.8);
+  background-color: rgb(139, 72, 0);
   padding: 5px;
 }
 
 .menu-container {
   color: #fff;
-  background-color: #5995DA;
+  background-color: #b3450086;
   /* Blue */
   padding: 20px 0;
   display: flex;
@@ -59,32 +59,84 @@
 }
 
 .header-container {
-  color: #5995DA;
-  background-color: #D6E9FE;
+  color: #b3450086;
+  background-color: #b345003f;
   display: flex;
   justify-content: center;
 }
 
 .header {
   width: 900px;
-  height: 300px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.illustration {
+table {
+  width: 80%;
+  margin: 40px auto;
+  background: #b345003f;
+}
+
+table.list {
+  text-align: center;
   width: 100%;
 }
 
-.github,
-.logo,
-.group-project {
-  border: 1px solid x#5995DA;
+td {
+  border: 1px solid rgb(139, 72, 0);
+  text-align: left;
+  padding: 8px 15px;
 }
 
-.github,
-.group-project {
-  align-self: flex-end;
-  margin-bottom: 20px;
+tr:nth-child(even), table.list thread> tr{
+  background-color: rgb(139, 72, 0);
+}
+
+input[type="text"], 
+input[type="number"] {
+  width: 91%;
+  padding:12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid rgb(139, 72, 0);
+  border-radius: 4px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  background-color: #b345003f;
+  padding: 6px 12px;
+  margin: 15px 0 10px;
+  display: inline-block;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type="submit"]:hover{
+  background: #fff;
+}
+
+input[type="reset"]:hover {
+  background: #fff;
+}
+
+button {
+  background-color: #b345003f;
+    padding: 6px 12px;
+    margin: 15px 0 10px;
+    display: inline-block;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+}
+
+button:hover {
+  background: #fff;
 }
