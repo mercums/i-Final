@@ -5,15 +5,11 @@ import db from '../config/initializeDB.js';
 
 const router = express.Router();
 
-//
-// This is a demo of how to structure your final project API
-// One route file is expected per student, with appropriate HTTP methods on each endpoint
-//
+// /////////////////////////////////
+// Cereal Routes
+// /////////////////////////////////
 
-// /////////////////////////////////
-// Food Inspection Set Demos
-// /////////////////////////////////
-router.route('/cereal') // actually localhost:3000/api/foodServicesPG
+router.route('/cereal/') // actually localhost:3030/api/cereal
   .all((req, res, next) => {
     // runs for all HTTP verbs first
     // think of it as route specific middleware!
@@ -23,7 +19,7 @@ router.route('/cereal') // actually localhost:3000/api/foodServicesPG
     try {
       console.log('touched cereal endpoint');
       const cereal = await db.Cereal.findAll();
-      const reply = Cereal.length > 0 ? { cereal } : { message: 'no results found' };
+      const reply = cereal.length > 0 ? { cereal } : { message: 'no results found' };
       res.json(reply);
     } catch (err) {
       console.log('err');
@@ -62,48 +58,20 @@ router.route('/cereal') // actually localhost:3000/api/foodServicesPG
     }
   });
 
-router.route('/cereal/:zipCode') // actually localhost:3000/api/foodServicesPG/20782
+router.route('/cereal/:hotCold') // actually localhost:3000/api/foodServicesPG/h
   .get(async (req, res) => {
     try {
-      const url = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
-      const request = await fetch(url);
-      const json = await request.json();
-      console.log(json);
-
-      const filteredList = json.filter((item, index) => {
-        const {zipCode} = req.params;
-        return item.zip === zipCode;
+      const reviews = await db.Cereal.findAll({
+        where: {
+          type: req.params.hotCold
+        }
       });
 
-      res.json({data: filteredList});
-    } catch (error) {
-      console.log(error);
-      res.json({error: error});
+      res.json(cereal);
+    } catch (err) {
+      console.error(err);
+      res.error('Server error');
     }
   })
-  .put((req, res) => {
-    try {
-      res.json({message: 'put Cereal ID endpoint'});
-    } catch (error) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
-    }
-  })
-  .post((req, res) => {
-    try {
-      res.json({message: 'post Cereal ID endpoint'});
-    } catch (error) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
-    }
-  })
-  .delete((req, res) => {
-    try {
-      res.json({message: 'delete Cereal ID endpoint'});
-    } catch (error) {
-      console.log(error);
-      res.json({error: 'Something went wrong on the server'});
-    }
-  });
 
 export default router;

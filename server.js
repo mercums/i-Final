@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import express from 'express';
 import apiRoutes from './routes/apiRoutes.js';
+import cerealRoutes from './routes/cereal.js';
+
 import db from './config/initializeDB.js';
 
 const app = express();
@@ -12,6 +14,7 @@ app.use(express.json());
 
 app.use(express.static(staticFolder));
 app.use('/api', apiRoutes);
+app.use('/api', cerealRoutes);
 
 async function bootServer() {
   try {
