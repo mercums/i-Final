@@ -1,27 +1,24 @@
 export default (sequelize, DataTypes) => {
-  const Reviews = sequelize.define(
-    'Reviews',
+  const Cereals = sequelize.define(
+    'Cereals',
     {
-      review_id: {
+      cereal_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
         primaryKey: true
       },
-      park_id: {
+      cereal_name: {
+        type: DataTypes.STRING,
+      },
+      hot_cold: {
+        type: DataTypes.STRING,
+      },
+      calories: {
         type: DataTypes.INTEGER,
-      },
-      title: {
-        type: DataTypes.STRING,
-      },
-      author: {
-        type: DataTypes.STRING,
-      },
-      description: {
-        type: DataTypes.STRING,
       }
     },
     { freezeTableName: true, timestamps: false }
   );
-  return Reviews;
+  return Cereals;
 };

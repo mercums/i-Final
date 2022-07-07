@@ -34,7 +34,9 @@
   /* Blue */
   padding: 20px 0;
   display: flex;
+  align-items: flex-start;
   justify-content: center;
+  flex-direction: row;
 }
 
 .menu {
@@ -42,6 +44,11 @@
   width: 900px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.date {
+  font-size: 25px;
 }
 
 .links {
@@ -58,11 +65,8 @@
   margin-left: 20px;
 }
 
-.header-container {
-  color: #b3450086;
+body{
   background-color: #b345003f;
-  display: flex;
-  justify-content: center;
 }
 
 .header {
@@ -111,7 +115,7 @@ input[type="reset"] {
   margin: 15px 0 10px;
   display: inline-block;
   border: none;
-  border-radius: 30px;
+  border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
   outline: none;
@@ -126,15 +130,15 @@ input[type="reset"]:hover {
 }
 
 button {
-  background-color: #b345003f;
-    padding: 6px 12px;
-    margin: 15px 0 10px;
-    display: inline-block;
-    border: none;
-    border-radius: 30px;
-    font-size: 1rem;
-    cursor: pointer;
-    outline: none;
+  background-color: #ebc4ab;
+  padding: 6px 12px;
+  margin: 15px 0 10px;
+  display: inline-block;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
 }
 
 button:hover {
